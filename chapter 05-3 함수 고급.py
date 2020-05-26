@@ -68,7 +68,7 @@ x
 y
 
 # 람다
-## 함수의 매개변수로 함수 전달하기 (func_as_param.py
+## 함수의 매개변수로 함수 전달하기 (func_as_param.py)
 def call_10_times(func):
     for i in range(10):
         func()
@@ -78,7 +78,7 @@ def print_hello():
 
 call_10_times(print_hello)
 
-## map() 함수와 filter() 함수 (call_with_func.py)
+## map() 함수와 filter() 함수 (call_with_func.py) --> 함수를 매개변수로 전달하는 대표적인 표준함수들이다.
 def power(item):
     return item * item
 
@@ -97,3 +97,102 @@ output_b = filter(under_3, list_input_a)
 print("# filter() 함수의 실행결과")
 print("map(power, list_input_a):", output_b)
 print("map(power, list_input_a):", list(output_b))
+
+# 람다의 개념: 간단한 함수를 쉽게 선언하는 방법
+## (사용법) lambda 매개변수: 리턴값
+## 람다 (lambda01.py)
+power = lambda x: x * x
+under_3 = lambda x: x < 3
+
+list_input_a = [1, 2, 3, 4, 5]
+
+output_a = map(power, list_input_a)
+print("# map() 함수의 실행결과")
+print("map(power, list_input_a):", output_a)
+print("map(power, list_input_a):", list(output_a))
+print()
+
+output_b = filter(under_3, list_input_a)
+print("# filter() 함수의 실행결과")
+print("filter(under_3, list_input_a):", output_b)
+print("filter(under_3, list_input_a):", list(output_b))
+
+## 인라인 람다 (lambda02.py)
+list_input_a = [1, 2, 3, 4, 5]
+
+output_a = map(lambda x: x * x, list_input_a)
+print("# map() 함수의 실행결과")
+print("map(power, list_input_a):", output_a)
+print("map(power, list_input_a):", list(output_a))
+print()
+
+output_b = filter(lambda x: x < 3, list_input_a)
+print("# filter() 함수의 실행결과")
+print("filter(under_3, list_input_a):", output_b)
+print("filter(under_3, list_input_a):", list(output_b))
+
+# 파일 처리
+## 파일 열고 닫기 (file_open.py)
+file = open("basic.txt", "w")
+file.write("Hello Python Programming")
+file.close()
+
+## with 키워드  --> 자동으로 파일이 닫힌다
+## (사용법) with open(문자열: 파일경로, 문자열: 모드) as 파일객체:
+##              문장
+with open("basic.txt", "w") as file:
+    file.write("Hello Python Programming")
+
+## 프로그램이 외부 파일, 외부 네크워크 등과 통신할 때는 데이터가 흐르는 길을 만들어야 하는데, 이를 스트림이라 한다
+## open() 함수는 프로그램에서 파일로 흐르는 길을 만드는 것이고, close() 함수는 프로그램에서 파일로 흐르는 길을 닫는 것이다.
+## with 키워드는 이러한 스트림을 열고 닫는 실수를 줄이고자 만들어진 구문이며, 파일 및 네트워크 길을 열고 닫을 때 사용한다.
+
+## 텍스트 읽기
+## (사용법) 파일 객체.read()
+## read() 함수로 텍스트 읽기 (file_read.py)
+with open("basic.txt", "r") as file:
+    contents = file.read()
+print(contents)
+
+## 텍스트 한 줄씩 읽기
+## 텍스트를 사용해 데이터를 구조적으로 표현할 수 있는 방법은 csv, xml, json 등이 있다
+## csv 파일은 한줄에 하나의 데이터를 나타내며, 각각의 줄은 쉼표를 사용해 데이터를 구분한다.
+## 첫번째 줄에 헤더를 넣어 각 데이터가 무엇을 나타내는지 설명할 수 있다.
+## 램덤하게 1000명의 키와 몸무게 만들기 (file_write.py)
+import random
+
+hanguls = list("가나다라마바사아자차카타파하")
+with open("info.txt", "w", encoding='euc_kr') as file:  # encoding='euc_kr' 추가하면, 한글 안 깨진다
+    for i in range(1000):
+        name = random.choice(hanguls) + random.choice(hanguls)
+        weight = random.randrange(40, 100)
+        height = random.randrange(140, 200)
+
+        file.write("{}, {}, {}\n".format(name, weight, height))
+
+# 반복문으로 파일 한 줄씩 읽기 (file_readlines.py)
+with open("info.txt", "r") as file:
+    for line in file:
+        (name, weight, height) = line.strip().split(", ")
+
+        if (not name) or (not weight) or (not height):
+            continue
+
+        bmi = int(weight) / ((int(height) /100) **2)
+        result = ""
+        if 25 <= bmi:
+            result = "과체중"
+        elif 18.5 <= bmi:
+            result = "정상 체중"
+        else: 
+            result = "저체중"
+
+        print('\n'.join([
+            "이름: {}",
+            "몸무게: {}",
+            "키: {}",
+            "BMI: {}",
+            "결과: {}"
+        ]).format(name, weight, height, bmi, result))
+        print()
+        
