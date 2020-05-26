@@ -196,3 +196,50 @@ with open("info.txt", "r") as file:
         ]).format(name, weight, height, bmi, result))
         print()
         
+# 제너레이터
+## 제너레이터는 이터레이터를 직접 만들때 사용하는 코드이다.
+## 함수 내부에 yield 키워드를 사용하면 해당 함수는 제너레이터 함수가 된다
+## 일반 함수와 달리 함수를 호출해도 함수 내부의 코드가 실행되지 않는다
+## 대신 함수의 리턴값으로 제너레이터를 리턴한다
+## 제너레이터 객체는 next() 함수는 사용해 함수 내부의 코드를 실행하며,
+## 이때 yield 키워드 부분까지만 실행하며, next() 함수의 리턴값으로 yield 키워드 뒤에 값만 출력한다 
+## 이처럼 제너레이터 객체는 함수의 코드를 조금씩 실행할 때 사용한다
+## 제너레이터 함수 (generator.py)
+def test():
+    print("함수가 호출되었습니다")
+    yield "test"
+
+print("A 지점 통과")
+test()
+
+print("B 지점 통과")
+test()
+print(test())
+
+## 제너레이터 객체와 next() 함수
+def test():
+    print("A 지점 통과")
+    yield 1
+    print("B 지점 통과")
+    yield 2
+    print("C 지점 통과")
+
+output = test()
+
+print("D 지점 통과")
+a = next(output)
+print(a)
+
+print("E 지점 통과")
+b = next(output)
+print(b)
+
+print("F 지점 통과")
+c = next(output)
+print(c)
+
+next(output)
+
+### 01. 튜플은 리스트와 비슷하지만, 요소를 수정할 수 없는 파이썬의 특별한 문법이다. 괄호를 생략해서 다양하게 활용 가능하다
+### 02. 람다는 함수를 짧게 쓸 수 있는 파이썬의 특별한 문법이다
+### 03. with 구문은 블록을 벗어날 때 close() 함수를 자동으로 호출해 주는 구문이다
