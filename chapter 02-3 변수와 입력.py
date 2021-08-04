@@ -1,5 +1,6 @@
-# 혼공파 10강 동영상 강의
+# 혼공파 10~11강 동영상 강의
 # https://youtu.be/KFYE6iRYBSY
+# https://youtu.be/uPXZ2xEYAhc
 
 # py 코드는 다른 이름의 파일로 저장하고, <ctrl> + F5 눌러 실행함
 
