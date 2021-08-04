@@ -1,5 +1,6 @@
-# 혼공파 7강 동영상 강의
+# 혼공파 7~8강 동영상 강의
 # https://youtu.be/jW8sVxacB6s
+# https://youtu.be/gWuOFAzDxM0
 
 # 실행할 줄을 선택한 후, <shift> + Enter 하면 터미널에서 실행
 # 기본적인 자료형 : 문자열, 숫자, 불
