@@ -1,3 +1,6 @@
+# 혼공파 13~14강 동영상 강의
+# https://youtu.be/KzwlSAS7Ry0
+
 # 불 만들기: 비교 연산자
 print(10 == 100)
 print(10 != 100)
