@@ -1,3 +1,7 @@
+# 혼공파 12강 동영상 강의
+# https://youtu.be/0jTIe3yG5yE
+# 
+
 # 문자열의 format() 함수
 ## format() 함수로 숫자를 문자열로 변환하기 (format_basic.py)
 string_a = "{}".format(10)
