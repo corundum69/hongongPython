@@ -1,6 +1,8 @@
 # 혼공파 12강 동영상 강의
 # https://youtu.be/0jTIe3yG5yE
-# 
+
+# 주어.동사(목적어) 형태로 사용하는 객체지향언어의 함수
+# 예) "{}".format(100)
 
 # 문자열의 format() 함수
 ## format() 함수로 숫자를 문자열로 변환하기 (format_basic.py)
