@@ -1,3 +1,6 @@
+# 혼공파 9강 동영상 강의
+# https://youtu.be/vy1xDoRC-hQ
+
 # 숫자의 종류
 print(273)
 print(52.273)
